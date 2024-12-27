@@ -21,6 +21,8 @@ def main():
     chat_history = []
     while(True):
         user_query = input("Ask a question: ")
+        if (user_query == "exit"):
+            break
         agent_response = conversation.query(user_query, chat_history)
         # Update chat history with first exchange
         chat_history.append((f"User: {user_query}", f"Agent: {agent_response}"))
