@@ -6,11 +6,15 @@ import hashlib
 import chromadb
 
 class Indexer:
-    _model_name = "all-MiniLM-L6-v2"
-    _collection_name = "xylux-em"
+    def __init__(self, collection_name="luxert-em", embedding_model_name="all-MiniLM-L6-v2"):
+        self._collection_name = collection_name
+        self._embedding_model_name = embedding_model_name
 
-    def __init__(self):
-        embeddings = HuggingFaceEmbeddings(model_name=self._model_name)
+        embeddings = HuggingFaceEmbeddings(
+            model_name=self._embedding_model_name, 
+            model_kwargs={"trust_remote_code": True}
+        )
+
         persistent_client = chromadb.PersistentClient()
         self._collection = persistent_client.get_or_create_collection(self._collection_name)
         self._vectordb = Chroma(

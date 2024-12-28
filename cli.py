@@ -6,7 +6,7 @@ from langchain_core.documents import Document
 def main():
     print("Starting up...")
     print("Initializing indexer...")
-    indexer = Indexer()
+    indexer = Indexer(embedding_model_name=NVDIA_NV_EMBED_V2)
 
     print("Adding document...")
     document = Document(page_content="An engineering manager works at Google and does engineering things.")

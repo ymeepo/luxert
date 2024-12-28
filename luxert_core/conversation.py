@@ -26,7 +26,7 @@ class Conversation:
     def query(self, query, chat_history=None):
         if chat_history is None:
             chat_history = []
-        response = self._conversation({"question": query, "chat_history": chat_history})
+        response = self._conversation.invoke({"question": query, "chat_history": chat_history})
         answer = response["answer"]
         return answer
     
