@@ -6,11 +6,14 @@ from langchain_core.documents import Document
 def main():
     print("Starting up...")
     print("Initializing indexer...")
-    indexer = Indexer(embedding_model_name=NVDIA_NV_EMBED_V2)
+    indexer = Indexer(persist_dir=CHROMA_DIR)
 
     print("Adding document...")
     document = Document(page_content="An engineering manager works at Google and does engineering things.")
     indexer.index_document(document)
+
+    print("Adding raw documents...")
+    indexer.index_files("luxert_data/raw_documents")
 
     print("Initiatizing conversation...")
     conversation = Conversation(
