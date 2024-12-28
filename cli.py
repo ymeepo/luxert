@@ -6,7 +6,7 @@ from langchain_core.documents import Document
 def main():
     print("Starting up...")
     print("Initializing indexer...")
-    indexer = Indexer(persist_dir=CHROMA_DIR)
+    indexer = Indexer(persist_dir=CHROMA_DIR, embedding_model_name=SENTENCE_TRANSFORMERS_DIR + "/" + ALL_MINILM_L6_V2)
 
     print("Adding document...")
     document = Document(page_content="An engineering manager works at Google and does engineering things.")
